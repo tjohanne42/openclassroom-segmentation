@@ -11,6 +11,7 @@ INPUT_SHAPE = (256, 256)
 NUM_CLASSES = 8
 
 model = tf.keras.models.load_model(MODEL_PATH, compile=False)
+print("Model Loaded")
 
 def preprocess_image(image, target_size=INPUT_SHAPE):
     """
@@ -40,6 +41,7 @@ def postprocess_mask(prediction, original_size):
 def predict():
     if 'file' not in request.files:
         return jsonify({'error': 'Aucun fichier fourni.'}), 400
+    print("Predicting ...")
     file = request.files['file']
     try:
         image = Image.open(file.stream)
