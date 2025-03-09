@@ -1,0 +1,6 @@
+gcloud auth login
+gcloud config set project openclassroomsegmentation
+gcloud auth configure-docker
+docker build -t gcr.io/openclassroomsegmentation/my-flask-api:latest .
+docker push gcr.io/openclassroomsegmentation/my-flask-api:latest
+gcloud run deploy my-flask-api --image gcr.io/openclassroomsegmentation/my-flask-api:latest --platform managed --memory 4G

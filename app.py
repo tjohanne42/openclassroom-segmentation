@@ -13,6 +13,10 @@ NUM_CLASSES = 8
 model = tf.keras.models.load_model(MODEL_PATH, compile=False)
 print("Model Loaded")
 
+@app.route('/')
+def home():
+    return "Hello World ! Théo Johannet OC_P8"
+
 def preprocess_image(image, target_size=INPUT_SHAPE):
     """
     Convertit l'image en RGB, la redimensionne et la normalise.
@@ -58,4 +62,4 @@ def predict():
     return send_file(img_io, mimetype='image/png')
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000)
+    app.run(host='0.0.0.0', port=8080)
